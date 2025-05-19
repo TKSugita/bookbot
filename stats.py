@@ -4,5 +4,23 @@ def count_words(text):
     # Returns: an integer consisting of the number of words in the text
 	# (number of elements in the resulting list)
     
-	words =  text.split()
+	words = text.split()
 	return len(words)
+
+def count_characters(text):
+      # load text into dictionary by character
+
+    #initialize variables
+    char_count = {}
+
+    # to remove case dependency
+    text = text.lower()
+
+    # use a for loop to step through each char in text and increase the count associated to the letter (key)
+
+    for char in text:
+        if char in char_count:
+                char_count[char] += 1
+        else:
+              char_count[char] = 1
+    return char_count
