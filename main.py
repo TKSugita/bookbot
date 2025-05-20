@@ -16,7 +16,7 @@ def get_book_text(filepath):
     except Exception as e:
         return f"Error reading file: {e}"
 
-from stats import count_words
+from stats import count_words, sort_char_count
 from stats import count_characters
 
 def main():
@@ -26,9 +26,18 @@ def main():
     book_path = "./books/frankenstein.txt"  # Relative path to the book file
     book_content = get_book_text(book_path)
     word_count = count_words(book_content)
-    character_count = count_characters(book_content)
-    print(f"{word_count} words found in the document")
-    print(character_count)
+    char_count = count_characters(book_content)
+    sorted_char = sort_char_count(char_count)
+    print(f"Found {word_count} total words")
+    for char_dict in sorted_char:
+        char = char_dict["char"]
+        count = char_dict["num"]
+
+        if char.isalpha():
+            print(f"{char}: {count}")
+
+    
+
 
 # Execute the main function
 if __name__ == "__main__":

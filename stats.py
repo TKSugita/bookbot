@@ -24,3 +24,16 @@ def count_characters(text):
         else:
               char_count[char] = 1
     return char_count
+
+def sort_char_count(char_count):
+    # Sorts char_count
+
+    # init return variable
+    char_list = []
+
+    for char, count in char_count.items():
+        char_dict = {"char": char, "num": count}
+        char_list.append(char_dict)
+    char_list.sort(key=lambda x: x["num"], reverse=True)
+
+    return char_list   
