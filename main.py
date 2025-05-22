@@ -16,6 +16,7 @@ def get_book_text(filepath):
     except Exception as e:
         return f"Error reading file: {e}"
 
+import sys
 from stats import count_words, sort_char_count
 from stats import count_characters
 
@@ -23,7 +24,12 @@ def main():
     """
     Main function that reads Frankenstein text and prints it to console.
     """
-    book_path = "./books/frankenstein.txt"  # Relative path to the book file
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else: 
+        book_path = sys.argv[1]  # Relative path to the book file
+    
     book_content = get_book_text(book_path)
     word_count = count_words(book_content)
     char_count = count_characters(book_content)
